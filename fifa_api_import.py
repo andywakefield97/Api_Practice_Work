@@ -10,6 +10,11 @@ class FIFA_Data_Pull:
         self.fifa_api_base = fifa_api_base
         self.fifa_data = fifa_data
 
+    def how_much_data():
+        pages_input = input('How many players data would you like to return?')
+        fifa_data = requests.get('https://fut.best/api/players?page=1&limit=%s' % pages_input)
+        return print(fifa_data.json())
+
 
     def get_status_code_fifa_data():
         if fifa_data.status_code == 200:
@@ -17,12 +22,10 @@ class FIFA_Data_Pull:
         else:
             print('Unsuccesful Connection made')
 
-    def json_fifa_data():
-        return print(fifa_data.json())
 
     if __name__ == '__main__':
         get_status_code_fifa_data()
-        json_fifa_data()
+        how_much_data()
 
 
 
@@ -48,11 +51,5 @@ class Format_FIFA_Data(FIFA_Data_Pull):
 
 
 
-
-
-#goretzka = {"nameOnCard": "Goretzka"}
-
-#get_goretzka = requests.get(fifa_api_base, params = goretzka)
-#print(get_goretzka.text)
 
 
